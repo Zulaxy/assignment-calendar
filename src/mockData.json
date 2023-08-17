@@ -1,0 +1,74 @@
+[
+  { "day": 1, "dayOfWeek": "Sunday" },
+  {
+    "day": 2,
+    "dayOfWeek": "Monday",
+    "events": {
+      "title": "Event 1",
+      "hour": "12 PM"
+    }
+  },
+  { "day": 3, "dayOfWeek": "Tuesday" },
+  { "day": 4, "dayOfWeek": "Wednesday" },
+  { "day": 5, "dayOfWeek": "Thursday" },
+  { "day": 6, "dayOfWeek": "Friday" },
+  { "day": 7, "dayOfWeek": "Saturday" },
+  { "day": 8, "dayOfWeek": "Sunday" },
+  {
+    "day": 9,
+    "dayOfWeek": "Monday",
+    "events": {
+      "title": "Event 1",
+      "hour": "12 PM"
+    }
+  },
+  { "day": 10, "dayOfWeek": "Tuesday" },
+  { "day": 11, "dayOfWeek": "Wednesday" },
+  { "day": 12, "dayOfWeek": "Thursday" },
+  { "day": 13, "dayOfWeek": "Friday" },
+  { "day": 14, "dayOfWeek": "Saturday" },
+  { "day": 15, "dayOfWeek": "Sunday" },
+  {
+    "day": 16,
+    "dayOfWeek": "Monday",
+    "events": [
+      {
+        "title": "Event 1",
+        "hour": "12 PM"
+      },
+      {
+        "title": "Event 1",
+        "hour": "12 PM"
+      }
+    ]
+  },
+  { "day": 17, "dayOfWeek": "Tuesday" },
+  { "day": 18, "dayOfWeek": "Wednesday" },
+  { "day": 19, "dayOfWeek": "Thursday" },
+  { "day": 20, "dayOfWeek": "Friday" },
+  { "day": 21, "dayOfWeek": "Saturday" },
+  { "day": 22, "dayOfWeek": "Sunday" },
+  {
+    "day": 23,
+    "dayOfWeek": "Monday",
+    "events": {
+      "title": "Event 1",
+      "hour": "12 PM"
+    }
+  },
+  { "day": 24, "dayOfWeek": "Tuesday" },
+  { "day": 25, "dayOfWeek": "Wednesday" },
+  { "day": 26, "dayOfWeek": "Thursday" },
+  { "day": 27, "dayOfWeek": "Friday" },
+  { "day": 28, "dayOfWeek": "Saturday" },
+  { "day": 29, "dayOfWeek": "Sunday" },
+  {
+    "day": 30,
+    "dayOfWeek": "Monday",
+    "events": {
+      "title": "Event 1",
+      "hour": "12 PM"
+    }
+  },
+  { "day": 31, "dayOfWeek": "Tuesday" }
+]

@@ -1,12 +1,20 @@
 import React from "react";
 import "./App.css";
 import { Box, Typography } from "@mui/material";
+import augustDaysData from "./mockData.json";
+
+import SingleDay from "./components/SingleDay";
 
 function App() {
   return (
-    <Box>
+    <>
       <Typography>This is my react app</Typography>
-    </Box>
+      <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+        {augustDaysData.map((dayData) => (
+          <SingleDay singleDay={dayData} />
+        ))}
+      </Box>
+    </>
   );
 }
 
