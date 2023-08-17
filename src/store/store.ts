@@ -4,6 +4,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   data: [],
+  clickedDate: null,
 };
 
 const counterSlice = createSlice({
@@ -13,6 +14,9 @@ const counterSlice = createSlice({
     updateData: (state, action) => {
       state.data = action.payload;
     },
+    clickedDate: (state, action) => {
+      state.clickedDate = action.payload;
+    },
   },
 });
 
@@ -20,6 +24,6 @@ const store = configureStore({
   reducer: counterSlice.reducer,
 });
 
-export const { updateData } = counterSlice.actions;
+export const { updateData, clickedDate } = counterSlice.actions;
 
 export default store;

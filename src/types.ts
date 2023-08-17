@@ -1,6 +1,7 @@
 export interface CalendarEvent {
   title: string;
   hour: string;
+  type: string;
 }
 
 export interface SingleDay {

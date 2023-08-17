@@ -38,7 +38,8 @@
       },
       {
         "title": "Event 1",
-        "hour": "13 PM"
+        "hour": "13 PM",
+        "type": "meeting"
       }
     ]
   },
@@ -53,7 +54,8 @@
     "dayOfWeek": "Monday",
     "events": {
       "title": "Event 1",
-      "hour": "12 PM"
+      "hour": "12 PM",
+      "type": "reminder"
     }
   },
   { "day": 24, "dayOfWeek": "Tuesday" },
