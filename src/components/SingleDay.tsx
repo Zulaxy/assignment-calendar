@@ -1,8 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 
+import { CalendarEvent, SingleDay as SingleDayTypes } from "../types";
+
 interface SingleDayProps {
-  singleDay: any;
+  singleDay: SingleDayTypes;
 }
 
 const SingleDay = ({ singleDay }: SingleDayProps) => {
@@ -14,7 +16,7 @@ const SingleDay = ({ singleDay }: SingleDayProps) => {
       <Typography>{singleDay.day}</Typography>
       {Array.isArray(singleDay.events) ? (
         <Box>
-          {singleDay.events.map((event: any, index: number) => (
+          {singleDay.events.map((event: CalendarEvent, index: number) => (
             <Box key={index}>
               <Typography>{event.title}</Typography>
               <Typography>{event.hour}</Typography>

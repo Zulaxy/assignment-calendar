@@ -33,12 +33,12 @@
     "dayOfWeek": "Monday",
     "events": [
       {
-        "title": "Event 1",
+        "title": "Sasdasda1",
         "hour": "12 PM"
       },
       {
         "title": "Event 1",
-        "hour": "12 PM"
+        "hour": "13 PM"
       }
     ]
   },
