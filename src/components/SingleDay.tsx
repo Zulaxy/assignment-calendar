@@ -6,20 +6,29 @@ interface SingleDayProps {
 }
 
 const SingleDay = ({ singleDay }: SingleDayProps) => {
-  console.log(singleDay);
   return (
     <Box
       sx={{ border: `1px solid black`, width: "300px", height: "200px", m: 1 }}
     >
       <Typography>{singleDay.dayOfWeek}</Typography>
       <Typography>{singleDay.day}</Typography>
-      {singleDay.events &&
-        singleDay.events.map((event: any, index: number) => (
-          <div key={index}>
-            <Typography>{event.title}</Typography>
-            <Typography>{event.hour}</Typography>
-          </div>
-        ))}
+      {Array.isArray(singleDay.events) ? (
+        <Box>
+          {singleDay.events.map((event: any, index: number) => (
+            <Box key={index}>
+              <Typography>{event.title}</Typography>
+              <Typography>{event.hour}</Typography>
+            </Box>
+          ))}
+        </Box>
+      ) : (
+        singleDay.events && (
+          <Box>
+            <Typography>{singleDay.events.title}</Typography>
+            <Typography>{singleDay.events.hour}</Typography>
+          </Box>
+        )
+      )}
     </Box>
   );
 };
