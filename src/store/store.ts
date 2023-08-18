@@ -7,7 +7,7 @@ const initialState = {
   clickedDate: null,
 };
 
-const counterSlice = createSlice({
+const mySlice = createSlice({
   name: "myReducer",
   initialState,
   reducers: {
@@ -21,9 +21,9 @@ const counterSlice = createSlice({
 });
 
 const store = configureStore({
-  reducer: counterSlice.reducer,
+  reducer: mySlice.reducer,
 });
 
-export const { updateData, clickedDate } = counterSlice.actions;
+export const { updateData, clickedDate } = mySlice.actions;
 
 export default store;

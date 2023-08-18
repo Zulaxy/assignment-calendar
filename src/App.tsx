@@ -3,13 +3,13 @@ import { Box, Typography } from "@mui/material";
 import augustDaysData from "./mockdata/mockData.json";
 import { useSelector, useDispatch } from "react-redux";
 import { updateData, clickedDate } from "./store/store";
-
+import { RootState, SingleDayTypes } from "./types/types";
 import { daysOfTheWeek } from "./mockdata/daysOfWeek";
 
 import SingleDay from "./components/SingleDay";
 
 function App() {
-  const data = useSelector((state: any) => state.data);
+  const data = useSelector((state: RootState) => state.data);
 
   const dispatch = useDispatch();
 
@@ -19,7 +19,7 @@ function App() {
    * @param {Array} daysData - An array of day data objects.
    * @returns {Array} An array of arrays, each representing a week of days.
    */
-  const groupDaysByWeek = (daysData: any[]) => {
+  const groupDaysByWeek = (daysData: SingleDayTypes[]) => {
     const weeks = [];
     let currentWeek = [];
 

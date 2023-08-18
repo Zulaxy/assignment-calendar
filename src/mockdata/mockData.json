@@ -4,8 +4,18 @@
     "day": 2,
     "dayOfWeek": "Monday",
     "events": [
-      { "title": "Event 1", "hour": "12 PM" },
-      { "title": "Event 2", "hour": "3 PM" }
+      {
+        "title": "Event 1",
+        "hour": "12 PM",
+        "type": "reminder",
+        "description": "test"
+      },
+      {
+        "title": "Event 2",
+        "hour": "3 PM",
+        "type": "meeting",
+        "description": "test"
+      }
     ]
   },
   { "day": 3, "dayOfWeek": "Tuesday" },
@@ -19,11 +29,22 @@
     "dayOfWeek": "Monday",
     "events": {
       "title": "Event 1",
-      "hour": "12 PM"
+      "hour": "12 PM",
+      "type": "meeting",
+      "description": "test"
     }
   },
   { "day": 10, "dayOfWeek": "Tuesday" },
-  { "day": 11, "dayOfWeek": "Wednesday" },
+  {
+    "day": 11,
+    "dayOfWeek": "Wednesday",
+    "events": {
+      "title": "Event 1",
+      "hour": "12 PM",
+      "type": "meeting",
+      "description": "test"
+    }
+  },
   { "day": 12, "dayOfWeek": "Thursday" },
   { "day": 13, "dayOfWeek": "Friday" },
   { "day": 14, "dayOfWeek": "Saturday" },
@@ -34,19 +55,31 @@
     "events": [
       {
         "title": "Sasdasda1",
-        "hour": "12 PM"
+        "hour": "12 PM",
+        "type": "reminder",
+        "description": "test"
       },
       {
         "title": "Event 1",
         "hour": "13 PM",
-        "type": "meeting"
+        "type": "meeting",
+        "description": "test"
       }
     ]
   },
   { "day": 17, "dayOfWeek": "Tuesday" },
   { "day": 18, "dayOfWeek": "Wednesday" },
   { "day": 19, "dayOfWeek": "Thursday" },
-  { "day": 20, "dayOfWeek": "Friday" },
+  {
+    "day": 20,
+    "dayOfWeek": "Friday",
+    "events": {
+      "title": "Event 1",
+      "hour": "12 PM",
+      "type": "meeting",
+      "description": "test"
+    }
+  },
   { "day": 21, "dayOfWeek": "Saturday" },
   { "day": 22, "dayOfWeek": "Sunday" },
   {
@@ -55,11 +88,21 @@
     "events": {
       "title": "Event 1",
       "hour": "12 PM",
-      "type": "reminder"
+      "type": "reminder",
+      "description": "test"
     }
   },
   { "day": 24, "dayOfWeek": "Tuesday" },
-  { "day": 25, "dayOfWeek": "Wednesday" },
+  {
+    "day": 25,
+    "dayOfWeek": "Wednesday",
+    "events": {
+      "title": "Event 1",
+      "hour": "12 PM",
+      "type": "reminder",
+      "description": "test"
+    }
+  },
   { "day": 26, "dayOfWeek": "Thursday" },
   { "day": 27, "dayOfWeek": "Friday" },
   { "day": 28, "dayOfWeek": "Saturday" },
@@ -69,7 +112,9 @@
     "dayOfWeek": "Monday",
     "events": {
       "title": "Event 1",
-      "hour": "12 PM"
+      "hour": "12 PM",
+      "type": "reminder",
+      "description": "test"
     }
   },
   { "day": 31, "dayOfWeek": "Tuesday" }

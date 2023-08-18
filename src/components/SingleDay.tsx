@@ -1,8 +1,12 @@
-import { Box, Typography } from "@mui/material";
+import { Avatar, Box, Typography } from "@mui/material";
 import React from "react";
 
-import { CalendarEvent, SingleDay as SingleDayTypes } from "../types";
+import { CalendarEvent, SingleDayTypes } from "../types/types";
 import { useSelector } from "react-redux";
+
+import { myAppColors } from "../utils/appColors";
+
+import EventField from "./EventField";
 
 interface SingleDayProps {
   singleDay: SingleDayTypes;
@@ -14,7 +18,6 @@ const SingleDay = ({
   onHandleUpdateClickedDate,
 }: SingleDayProps) => {
   const clickedDate = useSelector((state: any) => state.clickedDate);
-  console.log(clickedDate);
 
   return (
     <Box
@@ -31,33 +34,35 @@ const SingleDay = ({
       <Box
         sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
       >
-        <Typography
-          sx={{
-            mt: 2,
-            color: clickedDate === singleDay.day ? "green" : null,
-            cursor: "pointer",
-          }}
+        <Avatar
           onClick={() => {
             onHandleUpdateClickedDate(singleDay.day);
           }}
+          sx={{
+            fontSize: "0.80em",
+            width: 24,
+            height: 24,
+            my: 2,
+            backgroundColor:
+              clickedDate === singleDay.day ? myAppColors.mainGreen : null,
+            cursor: "pointer",
+          }}
         >
           {singleDay.day}
-        </Typography>
+        </Avatar>
       </Box>
       {Array.isArray(singleDay.events) ? (
         <Box>
           {singleDay.events.map((event: CalendarEvent, index: number) => (
             <Box key={index} sx={{ display: "flex" }}>
-              <Typography>{event.title}</Typography>
-              <Typography>{event.hour}</Typography>
+              <EventField event={event} />
             </Box>
           ))}
         </Box>
       ) : (
         singleDay.events && (
           <Box>
-            <Typography>{(singleDay.events as CalendarEvent).title}</Typography>
-            <Typography>{(singleDay.events as CalendarEvent).hour}</Typography>
+            <EventField event={singleDay.events} />
           </Box>
         )
       )}
