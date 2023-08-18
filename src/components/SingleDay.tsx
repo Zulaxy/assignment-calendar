@@ -1,5 +1,5 @@
 import { Avatar, Box, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
 import { CalendarEvent, SingleDayTypes } from "../types/types";
 import { useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { myAppColors } from "../utils/appColors";
 
 import EventField from "./EventField";
+import EventDetailsModal from "./modal/EventDetailsModal";
 
 interface SingleDayProps {
   singleDay: SingleDayTypes;

@@ -1,17 +1,28 @@
 import { Button, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { CalendarEvent } from "../types/types";
 
 import { myAppColors } from "../utils/appColors";
 
 import { Event, Notifications } from "@mui/icons-material";
+import EventDetailsModal from "./modal/EventDetailsModal";
 interface EventField {
   event: CalendarEvent;
 }
 
 const EventField = ({ event }: EventField) => {
+  const [modal, setModal] = useState(false);
+  const handleModalOpen = () => {
+    setModal(true);
+  };
+
+  const handleModalClose = () => {
+    setModal(false);
+  };
+
   return (
     <Button
+      onClick={handleModalOpen}
       sx={{
         width: "100%",
         height: "25px",
@@ -34,6 +45,13 @@ const EventField = ({ event }: EventField) => {
       }}
       variant="contained"
     >
+      {modal && (
+        <EventDetailsModal
+          open={modal}
+          onClose={handleModalClose}
+          event={event}
+        />
+      )}
       <Stack
         direction="row"
         sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}
