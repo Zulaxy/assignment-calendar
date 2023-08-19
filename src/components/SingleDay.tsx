@@ -24,7 +24,16 @@ const SingleDay = ({ singleDay }: SingleDayProps) => {
   const dispatch = useDispatch();
 
   const handleModalPreviewOpen = (event: CalendarEvent) => {
-    dispatch(updateModalData(event));
+    dispatch(
+      updateModalData({
+        title: event.title,
+        hour: event.hour,
+        type: event.type,
+        description: event.description,
+        id: event.id,
+        day: singleDay.day,
+      })
+    );
     dispatch(setModalOpen({ state: true, type: "preview" }));
   };
 
@@ -42,7 +51,7 @@ const SingleDay = ({ singleDay }: SingleDayProps) => {
         handleUpdateClickedDate(singleDay.day!);
       }}
       sx={{
-        border: `1px solid black`,
+        border: `1px solid ${myAppColors.contarstGray}`,
         width: "calc(100% / 7)",
         height: "200px",
         boxSizing: "border-box",

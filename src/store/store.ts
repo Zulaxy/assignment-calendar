@@ -39,6 +39,19 @@ const mySlice = createSlice({
         (foundDay!.events as CalendarEvent[]).push(event);
       }
     },
+    deleteEvent: (state, action) => {
+      const { event } = action.payload;
+
+      const foundDay = state.data.find(
+        (item: SingleDayTypes) => item.day === event.day
+      ) as SingleDayTypes | undefined;
+
+      if (foundDay && foundDay.events) {
+        foundDay.events = (foundDay.events as CalendarEvent[]).filter(
+          (filteredEvent: CalendarEvent) => filteredEvent.id !== event.id
+        );
+      }
+    },
   },
 });
 
@@ -52,6 +65,7 @@ export const {
   updateModalData,
   setModalOpen,
   addEvent,
+  deleteEvent,
 } = mySlice.actions;
 
 export default store;

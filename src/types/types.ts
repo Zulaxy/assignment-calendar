@@ -4,6 +4,7 @@ export interface CalendarEvent {
   type: string;
   description: string;
   id?: string;
+  day?: string | number
 }
 
 export interface SingleDayTypes {
@@ -16,5 +17,5 @@ export interface RootState {
   data: SingleDayTypes[];
   clickedDate: string | null;
   modalData: null | CalendarEvent;
-  modalOpen: { state: boolean; type: string };
+  modalOpen: { state: boolean; type: string};
 }

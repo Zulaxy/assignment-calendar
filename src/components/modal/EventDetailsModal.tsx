@@ -16,20 +16,16 @@ import { Close } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../types/types";
 
-import { addEvent, setModalOpen } from "../../store/store";
+import { addEvent, deleteEvent, setModalOpen } from "../../store/store";
 
 interface EventDetailsModalProps {
-  isCreateMode?: boolean;
   open: boolean;
   onClose: () => void;
 }
 
-const EventDetailsModal = ({
-  open,
-  onClose,
-  isCreateMode,
-}: EventDetailsModalProps) => {
+const EventDetailsModal = ({ open, onClose }: EventDetailsModalProps) => {
   const eventData = useSelector((state: RootState) => state.modalData);
+
   const modalType = useSelector((state: RootState) => state.modalOpen.type);
   const clickedDate = useSelector((state: RootState) => state.clickedDate);
   const dispatch = useDispatch();
@@ -40,6 +36,11 @@ const EventDetailsModal = ({
     description: "",
     type: "",
   });
+
+  const handleDeleteEvent = () => {
+    dispatch(deleteEvent({ event: eventData }));
+    dispatch(setModalOpen(false));
+  };
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -160,6 +161,10 @@ const EventDetailsModal = ({
               onChange={handleChange}
               fullWidth
             />
+
+            <Button variant="contained" onClick={handleDeleteEvent}>
+              Delete this Event
+            </Button>
           </>
         ) : (
           <>

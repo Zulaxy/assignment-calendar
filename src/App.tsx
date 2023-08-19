@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import SingleDay from "./components/SingleDay";
 import EventDetailsModal from "./components/modal/EventDetailsModal";
+import { myAppColors } from "./utils/appColors";
 
 function App() {
   const data = useSelector((state: RootState) => state.data);
@@ -67,9 +68,7 @@ function App() {
 
   return (
     <>
-      <Typography>This is my react app</Typography>
-
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Box sx={{ display: "flex", flexDirection: "column", p: 3 }}>
         <Box sx={{ display: "flex" }}>
           {daysOfTheWeek.map((day) => (
             <Typography
@@ -77,7 +76,8 @@ function App() {
               sx={{
                 width: "calc(100% / 7)",
                 textAlign: "center",
-                color: "red",
+
+                color: myAppColors.mainGray,
                 marginRight: "-1px",
               }}
             >
