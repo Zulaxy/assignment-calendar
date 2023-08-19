@@ -22,6 +22,7 @@ import { RootState, SingleDayTypes } from "./types/types";
 function App() {
   const data = useSelector((state: RootState) => state.data);
   const { modalOpen } = useSelector((state: RootState) => state);
+  const clickedDate = useSelector((state: RootState) => state.clickedDate);
   const isSmallScreen = useMediaQuery("(max-width:600px)");
 
   const dispatch = useDispatch();
@@ -120,13 +121,26 @@ function App() {
         ))}
 
         {isSmallScreen && (
-          <Button
-            sx={{ backgroundColor: myAppColors.mainBlue, mt: 2 }}
-            variant="contained"
-            onClick={handleModalNewOpen}
+          <Box
+            sx={{
+              disply: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
           >
-            Add event for selected Date
-          </Button>
+            <Button
+              disabled={clickedDate === null}
+              size="small"
+              sx={{
+                backgroundColor: myAppColors.mainBlue,
+                mt: 2,
+              }}
+              variant="contained"
+              onClick={handleModalNewOpen}
+            >
+              Add event for the selected Date
+            </Button>
+          </Box>
         )}
 
         {modalOpen.state && (
