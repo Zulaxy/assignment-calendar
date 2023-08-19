@@ -3,7 +3,7 @@ import React from "react";
 
 //material ui
 import { Button, Stack, Typography } from "@mui/material";
-import { Event, NoEncryption, Notifications } from "@mui/icons-material";
+import { Event, Notifications } from "@mui/icons-material";
 
 //types & utils
 import { CalendarEvent } from "../types/types";

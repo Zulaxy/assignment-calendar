@@ -2,7 +2,13 @@
 import React from "react";
 
 //material ui imports
-import { Avatar, Box, IconButton, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  IconButton,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { Add } from "@mui/icons-material";
 
 //types & utils imports
@@ -26,6 +32,8 @@ interface SingleDayProps {
 
 const SingleDay = ({ singleDay }: SingleDayProps) => {
   const { clickedDate } = useSelector((state: RootState) => state);
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
+
   const dispatch = useDispatch();
 
   /**
@@ -140,7 +148,7 @@ const SingleDay = ({ singleDay }: SingleDayProps) => {
           ) : null}
         </Box>
 
-        {clickedDate === singleDay.day && (
+        {clickedDate === singleDay.day && !isSmallScreen && (
           <Box
             sx={{
               display: "flex",

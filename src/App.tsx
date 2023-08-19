@@ -6,7 +6,7 @@ import SingleDay from "./components/SingleDay";
 import EventDetailsModal from "./components/modal/EventDetailsModal";
 
 //material ui imports
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography, useMediaQuery } from "@mui/material";
 
 //utils & data
 import { v4 as uuidv4 } from "uuid";
@@ -22,8 +22,18 @@ import { RootState, SingleDayTypes } from "./types/types";
 function App() {
   const data = useSelector((state: RootState) => state.data);
   const { modalOpen } = useSelector((state: RootState) => state);
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
 
   const dispatch = useDispatch();
+
+  /**
+   * Opens a new calendar event modal.
+   *
+   * @returns {void}
+   */
+  const handleModalNewOpen = () => {
+    dispatch(setModalOpen({ state: true, type: "add" }));
+  };
 
   /**
    * Closes the modal by dispatching an action to set the modal open state to false.
@@ -108,6 +118,16 @@ function App() {
             ))}
           </Box>
         ))}
+
+        {isSmallScreen && (
+          <Button
+            sx={{ backgroundColor: myAppColors.mainBlue, mt: 2 }}
+            variant="contained"
+            onClick={handleModalNewOpen}
+          >
+            Add event for selected Date
+          </Button>
+        )}
 
         {modalOpen.state && (
           <Box>
