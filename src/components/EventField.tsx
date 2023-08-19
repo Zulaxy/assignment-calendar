@@ -17,7 +17,7 @@ const EventField = ({ event }: EventField) => {
   return (
     <Button
       sx={{
-        width: "100%",
+        width: "auto",
         height: "25px",
         mx: "1px",
         mb: "2px",

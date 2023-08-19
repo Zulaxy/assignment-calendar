@@ -21,6 +21,7 @@ import { Close } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../types/types";
 import { addEvent, deleteEvent, setModalOpen } from "../../store/store";
+import { myAppColors } from "../../utils/appColors";
 
 interface EventDetailsModalProps {
   open: boolean;
@@ -186,7 +187,11 @@ const EventDetailsModal = ({ open, onClose }: EventDetailsModalProps) => {
               fullWidth
             />
 
-            <Button variant="contained" onClick={handleDeleteEvent}>
+            <Button
+              sx={{ backgroundColor: myAppColors.mainBlue }}
+              variant="contained"
+              onClick={handleDeleteEvent}
+            >
               Delete this Event
             </Button>
           </>
@@ -246,7 +251,11 @@ const EventDetailsModal = ({ open, onClose }: EventDetailsModalProps) => {
                   </Select>
                 </FormControl>
               </form>
-              <Button variant="contained" onClick={handleAddNewEvent}>
+              <Button
+                sx={{ backgroundColor: myAppColors.mainBlue }}
+                variant="contained"
+                onClick={handleAddNewEvent}
+              >
                 Save The Event
               </Button>
             </Box>
