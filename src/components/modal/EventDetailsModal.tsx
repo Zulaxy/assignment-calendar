@@ -1,20 +1,91 @@
-import { Box, Modal, Stack, Typography } from "@mui/material";
-import React from "react";
+import {
+  Box,
+  Button,
+  Modal,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+import React, { useState } from "react";
 
 import { Close } from "@mui/icons-material";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../types/types";
 
+import { addEvent } from "../../store/store";
+
 interface EventDetailsModalProps {
+  isCreateMode?: boolean;
   open: boolean;
   onClose: () => void;
 }
 
-const EventDetailsModal = ({ open, onClose }: EventDetailsModalProps) => {
+const EventDetailsModal = ({
+  open,
+  onClose,
+  isCreateMode,
+}: EventDetailsModalProps) => {
   const eventData = useSelector((state: RootState) => state.modalData);
+  const modalType = useSelector((state: RootState) => state.modalOpen.type);
+  const clickedDate = useSelector((state: RootState) => state.clickedDate);
+  const dispatch = useDispatch();
 
+  const [formData, setFormData] = useState({
+    title: "",
+    hour: "",
+    description: "",
+    type: "",
+  });
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleAddNewEvent = () => {
+    const event = {
+      title: formData.title,
+      hour: formData.hour,
+      description: formData.description,
+      type: formData.type,
+    };
+
+    const day = clickedDate;
+    dispatch(addEvent({ day, event }));
+  };
+
+  <>
+    <Stack
+      direction="row"
+      sx={{ display: "flex", justifyContent: "space-between" }}
+    >
+      <TextField
+        id="standard-basic"
+        variant="standard"
+        value={modalType === "preview" ? eventData?.title : null}
+      />
+
+      <Close onClick={onClose} sx={{ cursor: "pointer" }} />
+    </Stack>
+    <Typography sx={{ fontSize: "0.65em" }}>Title</Typography>
+    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+      {eventData?.hour}
+    </Typography>
+    <Typography sx={{ fontSize: "0.65em" }}>Hour</Typography>
+
+    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+      {eventData?.description}
+    </Typography>
+    <Typography sx={{ fontSize: "0.65em" }}>Description</Typography>
+
+    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+      {eventData?.type &&
+        eventData.type.charAt(0).toUpperCase() + eventData.type.slice(1)}
+    </Typography>
+    <Typography sx={{ fontSize: "0.65em" }}>Type</Typography>
+  </>;
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal open={open} onClose={onClose} hideBackdrop>
       <Box
         sx={{
           position: "absolute" as "absolute",
@@ -24,31 +95,125 @@ const EventDetailsModal = ({ open, onClose }: EventDetailsModalProps) => {
           width: 400,
           bgcolor: "background.paper",
           border: "1px solid #000",
-          boxShadow: 24,
+          boxShadow: "rgba(0, 0, 0, 0.1) 1px 1px 2px",
           p: 4,
         }}
       >
-        <Stack
-          direction="row"
-          sx={{ display: "flex", justifyContent: "space-between" }}
-        >
-          <Typography
-            onClick={onClose}
-            id="modal-modal-title"
-            variant="h6"
-            component="h2"
-          >
-            {eventData?.title}
-          </Typography>
-          <Close onClick={onClose} sx={{ cursor: "pointer" }} />
-        </Stack>
+        {modalType === "preview" ? (
+          <>
+            <Stack
+              direction="row"
+              sx={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <TextField
+                sx={{ pb: 3, width: "50%" }}
+                id="title"
+                name="title"
+                label="Title"
+                variant="standard"
+                value={eventData?.title}
+                onChange={handleChange}
+                fullWidth
+              />
 
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          {eventData?.hour}
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          {eventData?.description}
-        </Typography>
+              <Close onClick={onClose} sx={{ cursor: "pointer" }} />
+            </Stack>
+
+            <TextField
+              sx={{ pb: 3 }}
+              id="hour"
+              name="hour"
+              label="Hour"
+              variant="standard"
+              value={eventData?.hour}
+              onChange={handleChange}
+              fullWidth
+            />
+
+            <TextField
+              sx={{ pb: 3 }}
+              id="description"
+              name="description"
+              label="Description"
+              variant="standard"
+              rows={4}
+              value={eventData?.description}
+              onChange={handleChange}
+              fullWidth
+            />
+
+            <TextField
+              sx={{ pb: 3 }}
+              id="type"
+              name="type"
+              label="Type"
+              variant="standard"
+              value={
+                eventData?.type &&
+                eventData.type.charAt(0).toUpperCase() + eventData.type.slice(1)
+              }
+              onChange={handleChange}
+              fullWidth
+            />
+          </>
+        ) : (
+          <>
+            <Box>
+              <form>
+                <Stack
+                  direction="row"
+                  sx={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <TextField
+                    sx={{ pb: 3, width: "50%" }}
+                    id="title"
+                    name="title"
+                    label="Title"
+                    variant="standard"
+                    value={formData.title}
+                    onChange={handleChange}
+                    fullWidth
+                  />
+                  <Close onClick={onClose} sx={{ cursor: "pointer" }} />
+                </Stack>
+                <TextField
+                  sx={{ pb: 3 }}
+                  id="hour"
+                  name="hour"
+                  label="Hour"
+                  variant="standard"
+                  value={formData.hour}
+                  onChange={handleChange}
+                  fullWidth
+                />
+                <TextField
+                  sx={{ pb: 3 }}
+                  id="description"
+                  name="description"
+                  label="Description"
+                  variant="standard"
+                  value={formData.description}
+                  onChange={handleChange}
+                  multiline
+                  fullWidth
+                />
+                <TextField
+                  sx={{ pb: 3 }}
+                  id="type"
+                  name="type"
+                  label="Type"
+                  variant="standard"
+                  value={formData.type}
+                  onChange={handleChange}
+                  fullWidth
+                />
+              </form>
+              <Button variant="contained" onClick={handleAddNewEvent}>
+                Save The Event
+              </Button>
+            </Box>
+          </>
+        )}
       </Box>
     </Modal>
   );

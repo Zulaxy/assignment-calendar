@@ -1,41 +1,47 @@
-import { Avatar, Box, Typography } from "@mui/material";
+import { Avatar, Box, IconButton, Typography } from "@mui/material";
 import React, { useState } from "react";
 
-import { CalendarEvent, SingleDayTypes } from "../types/types";
+import { CalendarEvent, RootState, SingleDayTypes } from "../types/types";
 import { useDispatch, useSelector } from "react-redux";
 
 import { myAppColors } from "../utils/appColors";
 
 import EventField from "./EventField";
 import EventDetailsModal from "./modal/EventDetailsModal";
-import { updateModalData } from "../store/store";
+import {
+  updateModalData,
+  setModalOpen,
+  updateClickedDate,
+} from "../store/store";
+
+import { Add } from "@mui/icons-material";
 
 interface SingleDayProps {
   singleDay: SingleDayTypes;
-  onHandleUpdateClickedDate: (date: string) => void;
 }
 
-const SingleDay = ({
-  singleDay,
-  onHandleUpdateClickedDate,
-}: SingleDayProps) => {
-  const clickedDate = useSelector((state: any) => state.clickedDate);
+const SingleDay = ({ singleDay }: SingleDayProps) => {
+  const { clickedDate } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
 
-  const [modal, setModal] = useState(false);
-
-  const handleModalOpen = (event: CalendarEvent) => {
+  const handleModalPreviewOpen = (event: CalendarEvent) => {
     dispatch(updateModalData(event));
-
-    setModal(true);
+    dispatch(setModalOpen({ state: true, type: "preview" }));
   };
 
-  const handleModalClose = () => {
-    setModal(false);
+  const handleModalNewOpen = () => {
+    dispatch(setModalOpen({ state: true, type: "add" }));
+  };
+
+  const handleUpdateClickedDate = (date: string) => {
+    dispatch(updateClickedDate(date));
   };
 
   return (
     <Box
+      onClick={() => {
+        handleUpdateClickedDate(singleDay.day!);
+      }}
       sx={{
         border: `1px solid black`,
         width: "calc(100% / 7)",
@@ -44,15 +50,34 @@ const SingleDay = ({
         flexShrink: 0,
         marginBottom: "-1px",
         marginRight: "-1px",
+        transition: "border-color 0.2s",
+        position: "relative",
+        ...(clickedDate === singleDay.day && {
+          "&::before": {
+            content: "''",
+            position: "absolute",
+            top: "0px",
+            left: "0px",
+            right: "0px",
+            bottom: "0px",
+            border: `2px solid ${myAppColors.mainBlue}`,
+          },
+        }),
+        "&:hover::before": {
+          content: "''",
+          position: "absolute",
+          top: "0px",
+          left: "0px",
+          right: "0px",
+          bottom: "0px",
+          border: `2px solid ${myAppColors.hoverBlue}`,
+        },
       }}
     >
       <Box
         sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
       >
         <Avatar
-          onClick={() => {
-            onHandleUpdateClickedDate(singleDay.day);
-          }}
           sx={{
             fontSize: "0.80em",
             width: 24,
@@ -66,41 +91,50 @@ const SingleDay = ({
           {singleDay.day}
         </Avatar>
       </Box>
-      {Array.isArray(singleDay.events) ? (
+      <Box sx={{ display: "flex", flexDirection: "column" }}>
         <Box>
-          {singleDay.events.map((event: CalendarEvent, index: number) => (
-            <Box
-              onClick={() => {
-                handleModalOpen(event);
-              }}
-              key={index}
-              sx={{ display: "flex" }}
-            >
-              <EventField event={event} />
+          {Array.isArray(singleDay.events) ? (
+            <Box>
+              {singleDay.events.map((event: CalendarEvent, index: number) => (
+                <Box
+                  onClick={() => {
+                    handleModalPreviewOpen(event);
+                  }}
+                  key={index}
+                  sx={{ display: "flex", flexDirection: "column" }}
+                >
+                  <EventField event={event} />
+                </Box>
+              ))}
             </Box>
-          ))}
+          ) : null}
         </Box>
-      ) : (
-        singleDay.events && (
+
+        {clickedDate === singleDay.day && (
           <Box
-            onClick={() => {
-              handleModalOpen(singleDay.events as CalendarEvent);
+            sx={{
+              display: "flex",
+              flexDirection: "row-reverse",
+              alignItems: "flex-end",
+              position: "absolute",
+              bottom: 0,
+              right: 0,
+              marginRight: "10px",
+              marginBottom: "10px",
             }}
           >
-            <EventField event={singleDay.events} />
+            <IconButton
+              onClick={handleModalNewOpen}
+              aria-label="add"
+              color={"primary"}
+            >
+              <Add />
+            </IconButton>
           </Box>
-        )
-      )}
-      {modal && (
-        <Box>
-          <EventDetailsModal open={modal} onClose={handleModalClose} />
-        </Box>
-      )}
+        )}
+      </Box>
     </Box>
   );
 };
 
 export default SingleDay;
-function dispatch(arg0: any) {
-  throw new Error("Function not implemented.");
-}

@@ -27,23 +27,27 @@
   {
     "day": 9,
     "dayOfWeek": "Monday",
-    "events": {
-      "title": "Event 1",
-      "hour": "12 PM",
-      "type": "meeting",
-      "description": "test"
-    }
+    "events": [
+      {
+        "title": "Event 1",
+        "hour": "12 PM",
+        "type": "meeting",
+        "description": "test"
+      }
+    ]
   },
   { "day": 10, "dayOfWeek": "Tuesday" },
   {
     "day": 11,
     "dayOfWeek": "Wednesday",
-    "events": {
-      "title": "Event 1",
-      "hour": "12 PM",
-      "type": "meeting",
-      "description": "test"
-    }
+    "events": [
+      {
+        "title": "Event 1",
+        "hour": "12 PM",
+        "type": "meeting",
+        "description": "test"
+      }
+    ]
   },
   { "day": 12, "dayOfWeek": "Thursday" },
   { "day": 13, "dayOfWeek": "Friday" },
@@ -73,24 +77,28 @@
   {
     "day": 20,
     "dayOfWeek": "Friday",
-    "events": {
-      "title": "Event 1",
-      "hour": "12 PM",
-      "type": "meeting",
-      "description": "test"
-    }
+    "events": [
+      {
+        "title": "Event 1",
+        "hour": "12 PM",
+        "type": "meeting",
+        "description": "test"
+      }
+    ]
   },
   { "day": 21, "dayOfWeek": "Saturday" },
   { "day": 22, "dayOfWeek": "Sunday" },
   {
     "day": 23,
     "dayOfWeek": "Monday",
-    "events": {
-      "title": "Event 1",
-      "hour": "12 PM",
-      "type": "reminder",
-      "description": "test"
-    }
+    "events": [
+      {
+        "title": "Event 1",
+        "hour": "12 PM",
+        "type": "reminder",
+        "description": "test"
+      }
+    ]
   },
   { "day": 24, "dayOfWeek": "Tuesday" },
   {
@@ -110,12 +118,14 @@
   {
     "day": 30,
     "dayOfWeek": "Monday",
-    "events": {
-      "title": "Event 1",
-      "hour": "12 PM",
-      "type": "reminder",
-      "description": "test"
-    }
+    "events": [
+      {
+        "title": "Event 1",
+        "hour": "12 PM",
+        "type": "reminder",
+        "description": "test"
+      }
+    ]
   },
   { "day": 31, "dayOfWeek": "Tuesday" }
 ]
