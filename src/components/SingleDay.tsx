@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { myAppColors } from "../utils/appColors";
 
 import EventField from "./EventField";
-import EventDetailsModal from "./modal/EventDetailsModal";
 import {
   updateModalData,
   setModalOpen,

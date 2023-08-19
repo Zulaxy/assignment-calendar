@@ -1,7 +1,11 @@
 import {
   Box,
   Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
   Modal,
+  Select,
   Stack,
   TextField,
   Typography,
@@ -12,7 +16,7 @@ import { Close } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../types/types";
 
-import { addEvent } from "../../store/store";
+import { addEvent, setModalOpen } from "../../store/store";
 
 interface EventDetailsModalProps {
   isCreateMode?: boolean;
@@ -52,6 +56,7 @@ const EventDetailsModal = ({
 
     const day = clickedDate;
     dispatch(addEvent({ day, event }));
+    dispatch(setModalOpen(false));
   };
 
   <>
@@ -190,23 +195,27 @@ const EventDetailsModal = ({
                   sx={{ pb: 3 }}
                   id="description"
                   name="description"
-                  label="Description"
                   variant="standard"
+                  label="Description"
                   value={formData.description}
                   onChange={handleChange}
                   multiline
                   fullWidth
                 />
-                <TextField
-                  sx={{ pb: 3 }}
-                  id="type"
-                  name="type"
-                  label="Type"
-                  variant="standard"
-                  value={formData.type}
-                  onChange={handleChange}
-                  fullWidth
-                />
+                <FormControl sx={{ width: "100%", pb: 3 }}>
+                  <InputLabel>Type</InputLabel>
+                  <Select
+                    id="type"
+                    name="type"
+                    variant="standard"
+                    value={formData.type}
+                    defaultValue=""
+                    onChange={handleChange}
+                  >
+                    <MenuItem value="meeting">Meeting</MenuItem>
+                    <MenuItem value="reminder">Reminder</MenuItem>
+                  </Select>
+                </FormControl>
               </form>
               <Button variant="contained" onClick={handleAddNewEvent}>
                 Save The Event
