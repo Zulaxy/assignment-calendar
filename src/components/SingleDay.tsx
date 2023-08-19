@@ -75,7 +75,7 @@ const SingleDay = ({ singleDay }: SingleDayProps) => {
       sx={{
         border: `1px solid ${myAppColors.contarstGray}`,
         width: "calc(100% / 7)",
-        height: "200px",
+        height: { xs: "100px", sm: "200px" },
         boxSizing: "border-box",
         flexShrink: 0,
         marginBottom: "-1px",
@@ -109,9 +109,9 @@ const SingleDay = ({ singleDay }: SingleDayProps) => {
       >
         <Avatar
           sx={{
-            fontSize: "0.80em",
-            width: 24,
-            height: 24,
+            fontSize: { xs: "0.50em", sm: "0.80em" },
+            width: { xs: 14, sm: 24 },
+            height: { xs: 14, sm: 24 },
             my: 2,
             backgroundColor:
               clickedDate === singleDay.day ? myAppColors.mainBlue : null,
