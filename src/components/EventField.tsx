@@ -1,11 +1,14 @@
-import { Button, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
-import { CalendarEvent } from "../types/types";
+//react imports
+import React from "react";
 
+//material ui
+import { Button, Stack, Typography } from "@mui/material";
+import { Event, Notifications } from "@mui/icons-material";
+
+//types & utils
+import { CalendarEvent } from "../types/types";
 import { myAppColors } from "../utils/appColors";
 
-import { Event, Notifications } from "@mui/icons-material";
-import EventDetailsModal from "./modal/EventDetailsModal";
 interface EventField {
   event: CalendarEvent;
 }

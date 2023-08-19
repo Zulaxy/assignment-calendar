@@ -5,16 +5,16 @@
     "dayOfWeek": "Monday",
     "events": [
       {
-        "title": "Event 1",
+        "title": "Get Up",
         "hour": "12 PM",
         "type": "reminder",
-        "description": "test"
+        "description": "Get up and go to work."
       },
       {
-        "title": "Event 2",
+        "title": "Brush Teeth",
         "hour": "3 PM",
         "type": "meeting",
-        "description": "test"
+        "description": "Make sure to brush your teeth."
       }
     ]
   },
@@ -29,10 +29,10 @@
     "dayOfWeek": "Monday",
     "events": [
       {
-        "title": "Event 1",
+        "title": "Go Gym",
         "hour": "12 PM",
         "type": "meeting",
-        "description": "test"
+        "description": "It is always beneficial to stay in shape."
       }
     ]
   },
@@ -42,10 +42,10 @@
     "dayOfWeek": "Wednesday",
     "events": [
       {
-        "title": "Event 1",
+        "title": "Event Test",
         "hour": "12 PM",
         "type": "meeting",
-        "description": "test"
+        "description": "This is a test event description."
       }
     ]
   },
@@ -58,16 +58,16 @@
     "dayOfWeek": "Monday",
     "events": [
       {
-        "title": "Sasdasda1",
+        "title": "Test Event 3",
         "hour": "12 PM",
         "type": "reminder",
-        "description": "test"
+        "description": "Test Event 3 Description"
       },
       {
-        "title": "Event 1",
+        "title": "Random Event 3",
         "hour": "13 PM",
         "type": "meeting",
-        "description": "test"
+        "description": "This is the description of that random event."
       }
     ]
   },
@@ -79,10 +79,10 @@
     "dayOfWeek": "Friday",
     "events": [
       {
-        "title": "Event 1",
+        "title": "Random Event 1",
         "hour": "12 PM",
         "type": "meeting",
-        "description": "test"
+        "description": "This is the description of that random event."
       }
     ]
   },
@@ -93,10 +93,10 @@
     "dayOfWeek": "Monday",
     "events": [
       {
-        "title": "Event 1",
+        "title": "Event 21",
         "hour": "12 PM",
         "type": "reminder",
-        "description": "test"
+        "description": "Description"
       }
     ]
   },
@@ -105,7 +105,7 @@
     "day": 25,
     "dayOfWeek": "Wednesday",
     "events": {
-      "title": "Event 1",
+      "title": "Event 32",
       "hour": "12 PM",
       "type": "reminder",
       "description": "test"
@@ -120,7 +120,7 @@
     "dayOfWeek": "Monday",
     "events": [
       {
-        "title": "Event 1",
+        "title": "Event X",
         "hour": "12 PM",
         "type": "reminder",
         "description": "test"

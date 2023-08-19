@@ -1,3 +1,7 @@
+//react imports
+import React, { ChangeEvent, useState } from "react";
+
+//material ui imports
 import {
   Box,
   Button,
@@ -6,16 +10,16 @@ import {
   MenuItem,
   Modal,
   Select,
+  SelectChangeEvent,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
-
 import { Close } from "@mui/icons-material";
+
+//redux & types imports
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../types/types";
-
 import { addEvent, deleteEvent, setModalOpen } from "../../store/store";
 
 interface EventDetailsModalProps {
@@ -25,7 +29,6 @@ interface EventDetailsModalProps {
 
 const EventDetailsModal = ({ open, onClose }: EventDetailsModalProps) => {
   const eventData = useSelector((state: RootState) => state.modalData);
-
   const modalType = useSelector((state: RootState) => state.modalOpen.type);
   const clickedDate = useSelector((state: RootState) => state.clickedDate);
   const dispatch = useDispatch();
@@ -37,16 +40,37 @@ const EventDetailsModal = ({ open, onClose }: EventDetailsModalProps) => {
     type: "",
   });
 
+  /**
+   * Deletes a calendar event and closes the modal.
+   *
+   * @returns {void}
+   */
   const handleDeleteEvent = () => {
     dispatch(deleteEvent({ event: eventData }));
     dispatch(setModalOpen(false));
   };
 
-  const handleChange = (e: any) => {
+  /**
+   * Handles changes in form input elements and updates the form data state.
+   *
+   * @param {ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement> | SelectChangeEvent} e - The event object representing the change in the input or select element.
+   * @returns {void}
+   */
+  const handleChange = (
+    e:
+      | ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+      | SelectChangeEvent
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  /**
+   * Handles the addition of a new event to the calendar.
+   * It creates an event object from the form data, dispatches an action to add the event to the state,
+   * and closes the modal.
+   * @returns {void}
+   */
   const handleAddNewEvent = () => {
     const event = {
       title: formData.title,

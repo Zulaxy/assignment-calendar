@@ -1,15 +1,23 @@
+//react imports
 import React, { useEffect } from "react";
-import { Box, Button, Typography } from "@mui/material";
+
+//project imports
+import SingleDay from "./components/SingleDay";
+import EventDetailsModal from "./components/modal/EventDetailsModal";
+
+//material ui imports
+import { Box, Typography } from "@mui/material";
+
+//utils & data
+import { v4 as uuidv4 } from "uuid";
+import { daysOfTheWeek } from "./mockdata/daysOfWeek";
+import { myAppColors } from "./utils/appColors";
 import augustDaysData from "./mockdata/mockData.json";
+
+//redux & types imports
 import { useSelector, useDispatch } from "react-redux";
 import { setModalOpen, updateData } from "./store/store";
 import { RootState, SingleDayTypes } from "./types/types";
-import { daysOfTheWeek } from "./mockdata/daysOfWeek";
-import { v4 as uuidv4 } from "uuid";
-
-import SingleDay from "./components/SingleDay";
-import EventDetailsModal from "./components/modal/EventDetailsModal";
-import { myAppColors } from "./utils/appColors";
 
 function App() {
   const data = useSelector((state: RootState) => state.data);
@@ -17,6 +25,11 @@ function App() {
 
   const dispatch = useDispatch();
 
+  /**
+   * Closes the modal by dispatching an action to set the modal open state to false.
+   *
+   * @returns {void}
+   */
   const handleModalClose = () => {
     dispatch(setModalOpen(false));
   };

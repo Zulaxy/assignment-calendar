@@ -1,19 +1,24 @@
+//react Imports
+import React from "react";
+
+//material ui imports
 import { Avatar, Box, IconButton, Typography } from "@mui/material";
-import React, { useState } from "react";
+import { Add } from "@mui/icons-material";
 
+//types & utils imports
 import { CalendarEvent, RootState, SingleDayTypes } from "../types/types";
-import { useDispatch, useSelector } from "react-redux";
-
 import { myAppColors } from "../utils/appColors";
 
+//project imports
 import EventField from "./EventField";
+
+//redux imports
+import { useDispatch, useSelector } from "react-redux";
 import {
   updateModalData,
   setModalOpen,
   updateClickedDate,
 } from "../store/store";
-
-import { Add } from "@mui/icons-material";
 
 interface SingleDayProps {
   singleDay: SingleDayTypes;
@@ -23,6 +28,12 @@ const SingleDay = ({ singleDay }: SingleDayProps) => {
   const { clickedDate } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
 
+  /**
+   * Opens a modal for previewing a calendar event and dispatches data to populate it.
+   *
+   * @param {CalendarEvent} event - The calendar event to preview.
+   * @returns {void}
+   */
   const handleModalPreviewOpen = (event: CalendarEvent) => {
     dispatch(
       updateModalData({
@@ -37,10 +48,21 @@ const SingleDay = ({ singleDay }: SingleDayProps) => {
     dispatch(setModalOpen({ state: true, type: "preview" }));
   };
 
+  /**
+   * Opens a new calendar event modal.
+   *
+   * @returns {void}
+   */
   const handleModalNewOpen = () => {
     dispatch(setModalOpen({ state: true, type: "add" }));
   };
 
+  /**
+   * Updates the clicked date in the calendar.
+   *
+   * @param {string} date - The date to set as the clicked date.
+   * @returns {void}
+   */
   const handleUpdateClickedDate = (date: string) => {
     dispatch(updateClickedDate(date));
   };

@@ -1,5 +1,3 @@
-// store/store.ts
-
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { CalendarEvent, SingleDayTypes } from "../types/types";
 
