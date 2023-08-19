@@ -123,7 +123,7 @@ const EventDetailsModal = ({ open, onClose }: EventDetailsModalProps) => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: 400,
+          width: { xs: "85%", sm: "80%", md: "60%", lg: "40%" },
           bgcolor: "background.paper",
           border: "1px solid #000",
           boxShadow: "rgba(0, 0, 0, 0.1) 1px 1px 2px",

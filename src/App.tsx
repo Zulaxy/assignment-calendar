@@ -86,6 +86,12 @@ function App() {
               key={day}
               sx={{
                 width: "calc(100% / 7)",
+                fontSize: {
+                  xs: "0.75em",
+                  sm: "0.85em",
+                  md: "1em",
+                  lg: "1.25em",
+                },
                 textAlign: "center",
                 color: myAppColors.mainGray,
                 marginRight: "-1px",
