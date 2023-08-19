@@ -14,4 +14,5 @@ export interface SingleDayTypes {
 export interface RootState {
   data: SingleDayTypes[];
   clickedDate: string | null;
+  modalData: null | CalendarEvent;
 }

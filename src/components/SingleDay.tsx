@@ -2,12 +2,13 @@ import { Avatar, Box, Typography } from "@mui/material";
 import React, { useState } from "react";
 
 import { CalendarEvent, SingleDayTypes } from "../types/types";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { myAppColors } from "../utils/appColors";
 
 import EventField from "./EventField";
 import EventDetailsModal from "./modal/EventDetailsModal";
+import { updateModalData } from "../store/store";
 
 interface SingleDayProps {
   singleDay: SingleDayTypes;
@@ -19,6 +20,19 @@ const SingleDay = ({
   onHandleUpdateClickedDate,
 }: SingleDayProps) => {
   const clickedDate = useSelector((state: any) => state.clickedDate);
+  const dispatch = useDispatch();
+
+  const [modal, setModal] = useState(false);
+
+  const handleModalOpen = (event: CalendarEvent) => {
+    dispatch(updateModalData(event));
+
+    setModal(true);
+  };
+
+  const handleModalClose = () => {
+    setModal(false);
+  };
 
   return (
     <Box
@@ -55,20 +69,38 @@ const SingleDay = ({
       {Array.isArray(singleDay.events) ? (
         <Box>
           {singleDay.events.map((event: CalendarEvent, index: number) => (
-            <Box key={index} sx={{ display: "flex" }}>
+            <Box
+              onClick={() => {
+                handleModalOpen(event);
+              }}
+              key={index}
+              sx={{ display: "flex" }}
+            >
               <EventField event={event} />
             </Box>
           ))}
         </Box>
       ) : (
         singleDay.events && (
-          <Box>
+          <Box
+            onClick={() => {
+              handleModalOpen(singleDay.events as CalendarEvent);
+            }}
+          >
             <EventField event={singleDay.events} />
           </Box>
         )
+      )}
+      {modal && (
+        <Box>
+          <EventDetailsModal open={modal} onClose={handleModalClose} />
+        </Box>
       )}
     </Box>
   );
 };
 
 export default SingleDay;
+function dispatch(arg0: any) {
+  throw new Error("Function not implemented.");
+}
