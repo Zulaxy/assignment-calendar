@@ -55,21 +55,7 @@
   { "day": 15, "dayOfWeek": "Sunday" },
   {
     "day": 16,
-    "dayOfWeek": "Monday",
-    "events": [
-      {
-        "title": "Test Event 3",
-        "hour": "16:00",
-        "type": "reminder",
-        "description": "Test Event 3 Description"
-      },
-      {
-        "title": "Random Event 3",
-        "hour": "09:00",
-        "type": "meeting",
-        "description": "This is the description of that random event."
-      }
-    ]
+    "dayOfWeek": "Monday"
   },
   { "day": 17, "dayOfWeek": "Tuesday" },
   { "day": 18, "dayOfWeek": "Wednesday" },
@@ -104,12 +90,20 @@
   {
     "day": 25,
     "dayOfWeek": "Wednesday",
-    "events": {
-      "title": "Event 32",
-      "hour": "22:30",
-      "type": "reminder",
-      "description": "test"
-    }
+    "events": [
+      {
+        "title": "Test Event 3",
+        "hour": "16:00",
+        "type": "reminder",
+        "description": "Test Event 3 Description"
+      },
+      {
+        "title": "Random Event 3",
+        "hour": "09:00",
+        "type": "meeting",
+        "description": "This is the description of that random event."
+      }
+    ]
   },
   { "day": 26, "dayOfWeek": "Thursday" },
   { "day": 27, "dayOfWeek": "Friday" },

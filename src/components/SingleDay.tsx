@@ -2,13 +2,7 @@
 import React from "react";
 
 //material ui imports
-import {
-  Avatar,
-  Box,
-  IconButton,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Avatar, Box, IconButton, useMediaQuery } from "@mui/material";
 import { Add } from "@mui/icons-material";
 
 //types & utils imports
@@ -32,6 +26,7 @@ interface SingleDayProps {
 
 const SingleDay = ({ singleDay }: SingleDayProps) => {
   const clickedDate = useSelector((state: RootState) => state.clickedDate);
+
   const isSmallScreen = useMediaQuery("(max-width:600px)");
 
   const dispatch = useDispatch();
@@ -133,12 +128,12 @@ const SingleDay = ({ singleDay }: SingleDayProps) => {
         <Box>
           {Array.isArray(singleDay.events) ? (
             <Box>
-              {singleDay.events.map((event: CalendarEvent, index: number) => (
+              {singleDay.events.map((event: CalendarEvent) => (
                 <Box
                   onClick={() => {
                     handleModalPreviewOpen(event);
                   }}
-                  key={index}
+                  key={event.id}
                   sx={{ display: "flex", flexDirection: "column" }}
                 >
                   <EventField event={event} />
