@@ -64,8 +64,6 @@ function App() {
     dispatch(updateData(updatedData));
   }, []);
 
-  console.log(data);
-
   return (
     <>
       <Box sx={{ display: "flex", flexDirection: "column", p: 3 }}>
@@ -76,7 +74,6 @@ function App() {
               sx={{
                 width: "calc(100% / 7)",
                 textAlign: "center",
-
                 color: myAppColors.mainGray,
                 marginRight: "-1px",
               }}
