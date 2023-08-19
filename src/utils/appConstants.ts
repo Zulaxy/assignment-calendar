@@ -7,3 +7,5 @@ export const myAppColors = {
   contarstGray: "#A7A7A7",
   mainGray: "#414141",
 };
+
+export const daysOfTheWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];

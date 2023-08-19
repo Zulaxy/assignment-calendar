@@ -10,8 +10,8 @@ import { Box, Button, Typography, useMediaQuery } from "@mui/material";
 
 //utils & data
 import { v4 as uuidv4 } from "uuid";
-import { daysOfTheWeek } from "./mockdata/daysOfWeek";
-import { myAppColors } from "./utils/appColors";
+import { daysOfTheWeek } from "./utils/appConstants";
+import { myAppColors } from "./utils/appConstants";
 import augustDaysData from "./mockdata/mockData.json";
 
 //redux & types imports

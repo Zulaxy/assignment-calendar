@@ -21,7 +21,7 @@ import { Close } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../types/types";
 import { addEvent, deleteEvent, setModalOpen } from "../../store/store";
-import { myAppColors } from "../../utils/appColors";
+import { myAppColors } from "../../utils/appConstants";
 import TimePickerValue from "../TimePicker";
 
 interface EventDetailsModalProps {

@@ -7,7 +7,7 @@ import { Add } from "@mui/icons-material";
 
 //types & utils imports
 import { CalendarEvent, RootState, SingleDayTypes } from "../types/types";
-import { myAppColors } from "../utils/appColors";
+import { myAppColors } from "../utils/appConstants";
 
 //project imports
 import EventField from "./EventField";
@@ -38,13 +38,15 @@ const SingleDay = ({ singleDay }: SingleDayProps) => {
    * @returns {void}
    */
   const handleModalPreviewOpen = (event: CalendarEvent) => {
+    const { title, hour, type, description, id } = event;
+
     dispatch(
       updateModalData({
-        title: event.title,
-        hour: event.hour,
-        type: event.type,
-        description: event.description,
-        id: event.id,
+        title,
+        hour,
+        type,
+        description,
+        id,
         day: singleDay.day,
       })
     );
@@ -126,7 +128,7 @@ const SingleDay = ({ singleDay }: SingleDayProps) => {
       </Box>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <Box>
-          {Array.isArray(singleDay.events) ? (
+          {Array.isArray(singleDay.events) && (
             <Box>
               {singleDay.events.map((event: CalendarEvent) => (
                 <Box
@@ -140,7 +142,7 @@ const SingleDay = ({ singleDay }: SingleDayProps) => {
                 </Box>
               ))}
             </Box>
-          ) : null}
+          )}
         </Box>
 
         {clickedDate === singleDay.day && !isSmallScreen && (

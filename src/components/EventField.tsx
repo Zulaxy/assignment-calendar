@@ -7,13 +7,27 @@ import { Event, Notifications } from "@mui/icons-material";
 
 //types & utils
 import { CalendarEvent } from "../types/types";
-import { myAppColors } from "../utils/appColors";
+import { myAppColors } from "../utils/appConstants";
 
 interface EventField {
   event: CalendarEvent;
 }
 
 const EventField = ({ event }: EventField) => {
+  const backgroundColor =
+    event.type === "meeting"
+      ? myAppColors.mainPurple
+      : event.type === "reminder"
+      ? myAppColors.mainBlue
+      : null;
+
+  const hoverBackgroundColor =
+    event.type === "meeting"
+      ? myAppColors.hoverPurple
+      : event.type === "reminder"
+      ? myAppColors.hoverBlue
+      : null;
+
   return (
     <Button
       sx={{
@@ -22,19 +36,9 @@ const EventField = ({ event }: EventField) => {
         height: "auto",
         mx: "1px",
         mb: "2px",
-        backgroundColor:
-          event.type === "meeting"
-            ? myAppColors.mainPurple
-            : event.type === "reminder"
-            ? myAppColors.mainBlue
-            : null,
+        backgroundColor,
         "&:hover": {
-          backgroundColor:
-            event.type === "meeting"
-              ? myAppColors.hoverPurple
-              : event.type === "reminder"
-              ? myAppColors.hoverBlue
-              : null,
+          backgroundColor: hoverBackgroundColor,
         },
       }}
       variant="contained"
