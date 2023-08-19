@@ -6,13 +6,13 @@
     "events": [
       {
         "title": "Get Up",
-        "hour": "12 PM",
+        "hour": "12:00",
         "type": "reminder",
         "description": "Get up and go to work."
       },
       {
         "title": "Brush Teeth",
-        "hour": "3 PM",
+        "hour": "15:00",
         "type": "meeting",
         "description": "Make sure to brush your teeth."
       }
@@ -30,7 +30,7 @@
     "events": [
       {
         "title": "Go Gym",
-        "hour": "12 PM",
+        "hour": "12:00",
         "type": "meeting",
         "description": "It is always beneficial to stay in shape."
       }
@@ -43,7 +43,7 @@
     "events": [
       {
         "title": "Event Test",
-        "hour": "12 PM",
+        "hour": "14:00",
         "type": "meeting",
         "description": "This is a test event description."
       }
@@ -59,13 +59,13 @@
     "events": [
       {
         "title": "Test Event 3",
-        "hour": "12 PM",
+        "hour": "16:00",
         "type": "reminder",
         "description": "Test Event 3 Description"
       },
       {
         "title": "Random Event 3",
-        "hour": "13 PM",
+        "hour": "09:00",
         "type": "meeting",
         "description": "This is the description of that random event."
       }
@@ -80,7 +80,7 @@
     "events": [
       {
         "title": "Random Event 1",
-        "hour": "12 PM",
+        "hour": "06:00",
         "type": "meeting",
         "description": "This is the description of that random event."
       }
@@ -94,7 +94,7 @@
     "events": [
       {
         "title": "Event 21",
-        "hour": "12 PM",
+        "hour": "17:30",
         "type": "reminder",
         "description": "Description"
       }
@@ -106,7 +106,7 @@
     "dayOfWeek": "Wednesday",
     "events": {
       "title": "Event 32",
-      "hour": "12 PM",
+      "hour": "22:30",
       "type": "reminder",
       "description": "test"
     }
@@ -121,7 +121,7 @@
     "events": [
       {
         "title": "Event X",
-        "hour": "12 PM",
+        "hour": "12:40",
         "type": "reminder",
         "description": "test"
       }

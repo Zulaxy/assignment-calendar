@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../types/types";
 import { addEvent, deleteEvent, setModalOpen } from "../../store/store";
 import { myAppColors } from "../../utils/appColors";
+import TimePickerValue from "../TimePicker";
 
 interface EventDetailsModalProps {
   open: boolean;
@@ -64,6 +65,16 @@ const EventDetailsModal = ({ open, onClose }: EventDetailsModalProps) => {
   ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  /**
+   * Handles time change of the picker
+   *
+   * @param {string} newTime - The event object representing the change in the input or select element.
+   * @returns {void}
+   */
+  const handleTimeChange = (newTime: string) => {
+    setFormData({ ...formData, hour: newTime });
   };
 
   /**
@@ -215,16 +226,12 @@ const EventDetailsModal = ({ open, onClose }: EventDetailsModalProps) => {
                   />
                   <Close onClick={onClose} sx={{ cursor: "pointer" }} />
                 </Stack>
-                <TextField
-                  sx={{ pb: 3 }}
-                  id="hour"
-                  name="hour"
-                  label="Hour"
-                  variant="standard"
-                  value={formData.hour}
-                  onChange={handleChange}
-                  fullWidth
+
+                <TimePickerValue
+                  selectedTime={formData.hour}
+                  onTimeChange={handleTimeChange}
                 />
+
                 <TextField
                   sx={{ pb: 3 }}
                   id="description"
