@@ -31,7 +31,7 @@ interface SingleDayProps {
 }
 
 const SingleDay = ({ singleDay }: SingleDayProps) => {
-  const { clickedDate } = useSelector((state: RootState) => state);
+  const clickedDate = useSelector((state: RootState) => state.clickedDate);
   const isSmallScreen = useMediaQuery("(max-width:600px)");
 
   const dispatch = useDispatch();

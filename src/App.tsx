@@ -21,7 +21,7 @@ import { RootState, SingleDayTypes } from "./types/types";
 
 function App() {
   const data = useSelector((state: RootState) => state.data);
-  const { modalOpen } = useSelector((state: RootState) => state);
+  const modalOpen = useSelector((state: RootState) => state.modalOpen);
   const clickedDate = useSelector((state: RootState) => state.clickedDate);
   const isSmallScreen = useMediaQuery("(max-width:600px)");
 
