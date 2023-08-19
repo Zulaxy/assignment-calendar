@@ -114,7 +114,7 @@ const SingleDay = ({ singleDay }: SingleDayProps) => {
             height: 24,
             my: 2,
             backgroundColor:
-              clickedDate === singleDay.day ? myAppColors.mainGreen : null,
+              clickedDate === singleDay.day ? myAppColors.mainBlue : null,
             cursor: "pointer",
           }}
         >
