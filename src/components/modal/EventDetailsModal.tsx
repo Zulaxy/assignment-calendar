@@ -96,36 +96,6 @@ const EventDetailsModal = ({ open, onClose }: EventDetailsModalProps) => {
     dispatch(setModalOpen(false));
   };
 
-  <>
-    <Stack
-      direction="row"
-      sx={{ display: "flex", justifyContent: "space-between" }}
-    >
-      <TextField
-        id="standard-basic"
-        variant="standard"
-        value={modalType === "preview" ? eventData?.title : null}
-      />
-
-      <Close onClick={onClose} sx={{ cursor: "pointer" }} />
-    </Stack>
-    <Typography sx={{ fontSize: "0.65em" }}>Title</Typography>
-    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-      {eventData?.hour}
-    </Typography>
-    <Typography sx={{ fontSize: "0.65em" }}>Hour</Typography>
-
-    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-      {eventData?.description}
-    </Typography>
-    <Typography sx={{ fontSize: "0.65em" }}>Description</Typography>
-
-    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-      {eventData?.type &&
-        eventData.type.charAt(0).toUpperCase() + eventData.type.slice(1)}
-    </Typography>
-    <Typography sx={{ fontSize: "0.65em" }}>Type</Typography>
-  </>;
   return (
     <Modal open={open} onClose={onClose} hideBackdrop>
       <Box
