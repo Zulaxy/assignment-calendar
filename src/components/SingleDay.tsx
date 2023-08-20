@@ -130,17 +130,30 @@ const SingleDay = ({ singleDay }: SingleDayProps) => {
         <Box>
           {Array.isArray(singleDay.events) && (
             <Box>
-              {singleDay.events.map((event: CalendarEvent) => (
-                <Box
-                  onClick={() => {
-                    handleModalPreviewOpen(event);
-                  }}
-                  key={event.id}
-                  sx={{ display: "flex", flexDirection: "column" }}
-                >
-                  <EventField event={event} />
-                </Box>
-              ))}
+              {singleDay.events
+                .slice() // Create a shallow copy of the events array to avoid mutating the original
+                .sort((a, b) => {
+                  // Extract the hour and minute parts from the 'hour' string
+                  const [hourA, minuteA] = a.hour.split(":").map(Number);
+                  const [hourB, minuteB] = b.hour.split(":").map(Number);
+
+                  // Compare the hours first, and if they are equal, compare the minutes
+                  if (hourA !== hourB) {
+                    return hourA - hourB;
+                  }
+                  return minuteA - minuteB;
+                })
+                .map((event: CalendarEvent) => (
+                  <Box
+                    onClick={() => {
+                      handleModalPreviewOpen(event);
+                    }}
+                    key={event.id}
+                    sx={{ display: "flex", flexDirection: "column" }}
+                  >
+                    <EventField event={event} />
+                  </Box>
+                ))}
             </Box>
           )}
         </Box>
